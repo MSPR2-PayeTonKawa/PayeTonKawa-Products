@@ -6,7 +6,7 @@ Route::get("/", function () {
     return view("welcome");
 });
 
-Route::get("/api/test", function () {
+Route::get("/products/api/test", function () {
     return response()->json([
         "status" => "success",
         "service" => "products-api",
