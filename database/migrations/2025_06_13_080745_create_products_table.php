@@ -11,20 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-    public function up(): void
-{
-    Schema::create('products', function (Blueprint $table) {
-        $table->uuid('id')->primary();
-        $table->string('name');
-        $table->text('description')->nullable();
-        $table->string('origin', 100)->nullable();
-        $table->decimal('price', 10, 2);
-        $table->integer('stock')->default(0);
-        $table->unsignedBigInteger('orders_id')->nullable();
-        $table->timestamps();
-    });
-}
-
+        Schema::create('products', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('origin', 100)->nullable();
+            $table->decimal('price', 10, 2);
+            $table->integer('stock')->default(0);
+            $table->unsignedBigInteger('orders_id')->nullable();
+            $table->timestamps(); // ajoute created_at et updated_at
+        });
     }
 
     /**

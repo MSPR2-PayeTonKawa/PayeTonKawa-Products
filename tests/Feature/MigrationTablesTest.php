@@ -2,19 +2,27 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
 class MigrationTablesTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
+    /** @test */
+    public function categories_table_has_expected_columns()
     {
-        $response = $this->get('/');
+        $this->assertTrue(Schema::hasTable('categories'));
+        $this->assertTrue(Schema::hasColumns('categories', [
+            'id', 'name'
+        ]));
+    }
 
-        $response->assertStatus(200);
+    /** @test */
+    public function products_table_has_expected_columns()
+    {
+        $this->assertTrue(Schema::hasTable('products'));
+        $this->assertTrue(Schema::hasColumns('products', [
+            'id', 'name', 'description', 'origin', 'price', 'stock', 'category_id'
+        ]));
     }
 }
+
