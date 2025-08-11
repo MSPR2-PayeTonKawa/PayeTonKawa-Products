@@ -20,4 +20,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
     }
+   //Lier le seeder au DatabaseSeeder
+    public function run(): void
+    {
+        $this->call(ProductSeeder::class);
+    }
+
 }
