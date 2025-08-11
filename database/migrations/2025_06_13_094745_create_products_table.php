@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
@@ -18,14 +15,11 @@ return new class extends Migration
             $table->string('origin', 100)->nullable();
             $table->decimal('price', 10, 2);
             $table->integer('stock')->default(0);
-            $table->unsignedBigInteger('orders_id')->nullable();
-            $table->timestamps(); // ajoute created_at et updated_at
+            $table->foreignUuid('category_id')->constrained('categories')->cascadeOnDelete();;
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('products');
