@@ -26,8 +26,8 @@ class ProductSeeder extends Seeder
                     'name' => "$catName - Produit $i",
                     'description' => "Description du produit $i dans la catégorie $catName",
                     'origin' => 'Brésil',
-                    'price' => rand(5, 15) + 0.99,
-                    'stock' => rand(10, 100),
+                    'price' => random_int(5, 15) + 0.99,
+                    'stock' => random_int(10, 100),
                     'category_id' => $category->id
                 ]);
             }
