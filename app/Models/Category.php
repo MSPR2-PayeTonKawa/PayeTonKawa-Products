@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Models\Product;
 
 class Category extends Model
 {
-    public $incrementing = false;
+    public $incrementing = false; // UUID
     protected $keyType = 'string';
 
     protected $fillable = ['name'];
@@ -16,7 +17,9 @@ class Category extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->id = (string) Str::uuid();
+            if (empty($model->id)) {
+                $model->id = (string) Str::uuid();
+            }
         });
     }
 
